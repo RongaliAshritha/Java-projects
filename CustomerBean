@@ -1,0 +1,66 @@
+package pack1;
+
+import java.io.Serializable;
+
+public class CustomerBean implements Serializable {
+  
+	private String uName,uPwd,uFname,uLname,uAddr,uMail,umobile;
+
+	public String getuName() {
+		return uName;
+	}
+
+	public void setuName(String uName) {
+		this.uName = uName;
+	}
+
+	public String getuPwd() {
+		return uPwd;
+	}
+
+	public void setuPwd(String uPwd) {
+		this.uPwd = uPwd;
+	}
+
+	public String getuFname() {
+		return uFname;
+	}
+
+	public void setuFname(String uFname) {
+		this.uFname = uFname;
+	}
+
+	public String getuLname() {
+		return uLname;
+	}
+
+	public void setuLname(String uLname) {
+		this.uLname = uLname;
+	}
+
+	public String getuAddr() {
+		return uAddr;
+	}
+
+	public void setuAddr(String uAddr) {
+		this.uAddr = uAddr;
+	}
+
+	public String getuMail() {
+		return uMail;
+	}
+
+	public void setuMail(String uMail) {
+		this.uMail = uMail;
+	}
+
+	public String getUmobile() {
+		return umobile;
+	}
+
+	public void setUmobile(String umobile) {
+		this.umobile = umobile;
+	}
+	
+	public  CustomerBean() {}
+}

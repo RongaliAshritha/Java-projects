@@ -1,0 +1,43 @@
+package pack1;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/cregister")
+public class CustmoerRegisterServlet extends HttpServlet {
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		CustomerBean cbean= new CustomerBean();
+		cbean.setuName(req.getParameter("cname"));
+		cbean.setuPwd(req.getParameter("cpwd"));
+		cbean.setuFname(req.getParameter("cfname"));
+		cbean.setuLname(req.getParameter("clname"));
+		cbean.setuAddr(req.getParameter("caddr"));
+		cbean.setuMail(req.getParameter("cmail"));
+		cbean.setUmobile(req.getParameter("cmobile"));
+		
+	   CustomerRegisterDAO cdao   =new CustomerRegisterDAO();
+		  int  rowcount=cdao.insertdata(cbean);
+		   if(rowcount>0)
+		   {
+			   req.setAttribute("msg","data inserted");
+			    RequestDispatcher rd=req.getRequestDispatcher("CustomerLogin.html");
+			    rd.forward(req, resp);
+		   }
+		   
+		   else {
+		    	  req.setAttribute("msg","data  not inserted "); 
+		   	   RequestDispatcher rd= req.getRequestDispatcher("CustomerLogin.html");
+		   	   rd.forward(req, resp);  
+		      }
+		   
+	}
+
+}

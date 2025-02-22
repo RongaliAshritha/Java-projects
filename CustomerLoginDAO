@@ -1,0 +1,46 @@
+package pack1;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.servlet.RequestDispatcher;
+
+public class CustomerLoginDAO {
+	
+	
+	public CustomerBean retrievedata(String uName,String uPwd)
+	{
+		
+		CustomerBean cbean=null;
+		
+		try {
+			
+			Connection con=DBConnect.getCon();
+			PreparedStatement pstm   =con.prepareStatement("select*from customer where uname=? and pword=?");
+			     pstm.setString(1,uName);
+			     pstm.setString(2,uPwd);
+			     
+		ResultSet rs	   =pstm.executeQuery();
+		if(rs.next())
+		{
+			cbean=new CustomerBean();
+			cbean.setuName(rs.getString(1));
+			cbean.setuPwd(rs.getString(2));
+			cbean.setuFname(rs.getString(3));
+			cbean.setuLname(rs.getString(4));
+			cbean.setuAddr(rs.getString(5));
+			cbean.setuMail(rs.getString(6));
+			cbean.setUmobile(rs.getString(7));
+			
+		}
+			  
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return cbean;
+	}
+
+}
